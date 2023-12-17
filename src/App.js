@@ -6,6 +6,7 @@ import Time from './componentes/Time/Time';
 
 function App() {
 
+    // json times 
     const times = [
         {
             nome: 'Front-End',

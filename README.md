@@ -17,8 +17,7 @@ Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figm
 
 
 ## Sobre
-Curso da alura, carga horaria 14h Você pode acessar o curso através [DESSE LINK](https://cursos.alura.com.br/course/react-desenvolvendo-javascript). 
+Esse projeto começa nesse curso da alura com carga horaria de 14h e você pode acessar o curso através [DESSE LINK](https://cursos.alura.com.br/course/react-desenvolvendo-javascript). 
 
-
-
+Esse curso da alura com carga horaria de 8h que você pode acessar o curso através [DESSE LINK](https://cursos.alura.com.br/course/react-componentes-funcionam). dá continuidade ao projeto com uma uma feature para criar um novo time.
 

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Banner from './componentes/Banner/Banner';
 import Formulario from './componentes/Formulario/Formulario';
-import Time from './componentes/Time/Time';
 import Rodape from './componentes/Rodape/Rodape';
+import Time from './componentes/Time/Time';
 
 function App() {
 
@@ -36,33 +36,35 @@ function App() {
             nome: 'Inovação e Gestão',
             corPrimaria: '#FF8A29',
             corSecundaria: '#FFEEDF',
-        }
-        
+        },
     ]
 
     const [colaboradores, setColaboradores] = useState([])
-  
-    const aoNovoColaboradorAdicionado = (colaborador) => {
-      setColaboradores([...colaboradores, colaborador])
-    }
-  
-    return (
-      <div className="App">
-        <Banner />
-        <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
-        
-       {times.map(time => <Time 
-       key={time.nome} 
-       nome={time.nome} 
-       corPrimaria={time.corPrimaria} 
-       corSecundaria={time.corSecundaria}
-       colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-    />)}
 
-        <Rodape />
-   
-      </div>
+    const aoNovoColaboradorAdicionado = (colaborador) => {
+        setColaboradores([...colaboradores, colaborador])
+    }
+
+    return (
+        <div className="App">
+            <Banner />
+            <Formulario
+                times={times.map(time => time.nome)}
+                aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
+            />
+
+            {times.map((time, indice) =>
+                <Time
+                    key={indice}
+                    time={time}
+                    colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+                />
+            )}
+
+            <Rodape />
+
+        </div>
     );
-  }
-  
-  export default App;
+}
+
+export default App;

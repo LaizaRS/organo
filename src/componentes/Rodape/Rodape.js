@@ -1,5 +1,4 @@
 //src/componentes/Rodape/index.js
-
 import './Rodape.css'
 
 const Rodape = () => {

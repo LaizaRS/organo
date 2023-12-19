@@ -6,64 +6,71 @@ import Time from './componentes/Time/Time';
 
 function App() {
 
-    // json times 
-    const times = [
+    const [times, setTimes] = useState([
         {
-            nome: 'Front-End',
-            corPrimaria: '#82CFFA',
-            corSecundaria: '#E8F8FF',
+            nome: 'Programação',
+            cor: '#57C278'
         },
         {
-            nome: 'Data Sciense',
-            corPrimaria: '#A6D157',
-            corSecundaria: '#F0F8E2',
+            nome: 'Front-End',
+            cor: '#82CFFA'
+        },
+        {
+            nome: 'Data Science',
+            cor: '#A6D157'
         },
         {
             nome: 'Devops',
-            corPrimaria: '#E06B69',
-            corSecundaria: '#FDE7E8',
+            cor: '#E06B69'
         },
         {
             nome: 'UX e Design',
-            corPrimaria: '#D86EBF',
-            corSecundaria: '#FAE5F5',
+            cor: '#DB6EBF'
         },
         {
             nome: 'Mobile',
-            corPrimaria: '#FEBA05',
-            corSecundaria: '#FFF5D9',
+            cor: '#FFBA05'
         },
         {
             nome: 'Inovação e Gestão',
-            corPrimaria: '#FF8A29',
-            corSecundaria: '#FFEEDF',
+            cor: '#FF8A29'
+        },
+    ]);
+
+    const inicial = [
+        {
+            nome: 'JULIANA AMOASEI',
+            cargo: 'Desenvolvedora de software e instrutora',
+            imagem: 'https://www.alura.com.br/assets/img/lideres/juliana-amoasei.1647533644.jpeg',
+            time: times[0].nome
         },
     ]
 
-    const [colaboradores, setColaboradores] = useState([])
+    const [colaboradores, setColaboradores] = useState(inicial)
 
-    const aoNovoColaboradorAdicionado = (colaborador) => {
-        setColaboradores([...colaboradores, colaborador])
+    function deletarColaborador() {
+        console.log('deletando colaborador');
     }
 
+    function mudarCor(cor, nome) {
+        setTimes(times.map(time => {
+            if (time.nome === nome) {
+                time.cor = cor;
+            }
+            return time;
+        }));
+    }
+
+
     return (
-        <div className="App">
+        <div>
             <Banner />
-            <Formulario
-                times={times.map(time => time.nome)}
-                aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
-            />
-
-            {times.map((time, indice) =>
-                <Time
-                    key={indice}
-                    time={time}
-                    colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-                />
-            )}
-
+            <Formulario times={times.map(time => time.nome)} aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} />
+            <section className="times">
+                <h1>Minha organização</h1>
+                {times.map((time, indice) => <Time mudarCor={mudarCor} key={indice} time={time} colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)} aoDeletar={deletarColaborador} />)}
+            </section>
             <Rodape />
-
         </div>
     );
 }
